@@ -25,14 +25,14 @@ export default function Page() {
 
     fetch(URL).then(res => res.json()).then(data => {
       setLoading(true)
-      setData(data) // change this
+      setData(data) 
       setPageNumber(1)
       setCurrentCards(data.slice(0, 10 * 1))
     })
   }, [])
 
   useEffect(() => {
-    setCurrentCards(prev => {
+    setCurrentCards((prev): any => {
       return data.slice(0, 10 * pageNumber)
     })
   }, [pageNumber])
