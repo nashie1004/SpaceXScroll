@@ -70,10 +70,10 @@ export default function Page() {
               currentCards.map((item: any, i) => {
                 return <Card 
                   key={i} 
-                  image={item.links.patch.small ? item.links.patch.large : ""}
+                  image={item.links.patch.small ? item.links.patch.small : ""}
                   flightNumber={item.flight_number}
                   missionName={item.name}
-                  launchYear={item.date_unix}
+                  launchYear={item.date_local}
                   details={item.details}
                 />
               })
