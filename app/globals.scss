@@ -1,0 +1,91 @@
+$lightgrey: rgb(236, 224, 224);
+$darkFont: grey;
+$white: white;
+$lighterFont: rgb(163, 153, 153);
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body{
+  min-height: 100vh;
+  background: $lightgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  // display: grid;
+  justify-items: center;
+
+  gap: 1.5rem;
+  padding: 1rem;
+}
+header{
+  width: min(650px, 90%);
+  input{
+    background: $white;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: .9rem;
+    padding: .7rem 1.1rem;
+    color: $lighterFont;
+  }
+}
+main{
+  background: $white;
+  width: min(650px, 90%);
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+@media only screen and (min-width: 400px) {
+  main{
+    gap: 2rem;
+    padding: 2rem;
+  }
+  .card{
+    grid-template-columns: 110px 1fr;
+    height: 110px;
+    gap: 1.5rem;
+
+    .img{
+      width: 100%;
+    }
+  }
+}
+.card{
+  width: 100%;
+  display: grid;
+  grid-auto-rows: 100%;
+  grid-template-rows: 110px auto;
+  gap: 1rem;
+
+  .img{
+    background: $lightgrey;
+    width: 110px;
+
+    &::before{
+      display: none;
+      height: 2px;
+      width: 100%;
+      content: "";
+      z-index: 3;
+      background: $white;
+    }
+  }
+  .info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .6rem;
+
+    h3{
+      color: $darkFont;
+    }
+    p{
+      color: $lighterFont;
+    }
+  }
+}
