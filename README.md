@@ -1,1 +1,1 @@
-Deployed [Site] (https://space-x-scroll-2n7mn4w4c-nashie1004.vercel.app/)
+Deployed [Site] (https://space-x-scroll.vercel.app/)

@@ -11,12 +11,11 @@ export default function Page() {
 
   function detectScroll(){
     if (window.innerHeight + 
-      document.documentElement.scrollTop + 20 >=
+      document.documentElement.scrollTop + 40 >=
       document.documentElement.scrollHeight
     ){
-      if (data.length !== currentCards.length){
-        setPageNumber(prev => prev +1)
-      }
+      setPageNumber(prev => prev +1)
+      console.log('data', data.length, "cc", currentCards.length)
     }
   }
 
@@ -32,21 +31,28 @@ export default function Page() {
   }, [])
 
   useEffect(() => {
-    // console.log(pageNumber)
     setCurrentCards(prev => {
       return data.slice(0, 10 * pageNumber)
     })
   }, [pageNumber])
 
   function changeInput(e: any){
-    const pattern = new RegExp(e.target.value, "gi");
-    setData(prev => {
-      return prev.filter(item => {
-        return pattern.test(item['name']) ||
-        pattern.test(item['details']) ||
-        pattern.test(item['missionName']) && item 
+    if (e.target.value !== ''){
+      const pattern = new RegExp(e.target.value, "gi");
+      setCurrentCards(prev => {
+        const newArray = data.filter(item => {
+          return (
+            pattern.test(item['name']) ||
+            pattern.test(item['details']) ||
+            pattern.test(item['missionName']) && item 
+          )
+        })
+        return newArray
       })
-    })
+
+    } else {
+      setCurrentCards(data.slice(0, 10 * 1))
+    }
   }
 
   return (
@@ -59,7 +65,7 @@ export default function Page() {
       <main>
         {
           loading ? (
-            currentCards.length !== 0 && (
+            currentCards.length !== 0 ? (
               currentCards.map((item: any, i) => {
                 return <Card 
                   key={i} 
@@ -69,6 +75,10 @@ export default function Page() {
                   details={item.details}
                 />
               })
+            ) : (
+              <>
+                No Match 
+              </>
             )
           ) : (
             <>
