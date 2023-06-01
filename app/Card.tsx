@@ -1,4 +1,4 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import {LazyLoadImage} from "react-lazy-load-image-component";
 import rocket from '@/public/rocket.png'
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
