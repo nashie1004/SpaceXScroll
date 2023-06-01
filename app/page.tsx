@@ -15,9 +15,9 @@ export default function Page() {
       document.documentElement.scrollTop + 40 >=
       document.documentElement.scrollHeight
     ){
-      setPageNumber(prev => prev +1)
-      console.log('data', data.length, "cc", currentCards.length)
+      setPageNumber(prev => prev + 1)
     }
+
   }
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function Page() {
 
     fetch(URL).then(res => res.json()).then(data => {
       setLoading(true)
-      setData(data.slice(0, 30)) // change this
+      setData(data) // change this
       setPageNumber(1)
       setCurrentCards(data.slice(0, 10 * 1))
     })
@@ -70,6 +70,7 @@ export default function Page() {
               currentCards.map((item: any, i) => {
                 return <Card 
                   key={i} 
+                  image={item.links.patch.small ? item.links.patch.large : ""}
                   flightNumber={item.flight_number}
                   missionName={item.name}
                   launchYear={item.date_unix}
@@ -93,11 +94,9 @@ export default function Page() {
           currentCards.length === data.length &&
           currentCards.length !== 0 && data.length !== 0
         ) && (
-          // console.log('ok')
           <div className="end">No more data :/</div>  
         )
       }
-      {/* {console.log(currentCards.length, data.length)} */}
     </>    
   )
 }
