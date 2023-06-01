@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from "react"
 import Card from "./Card"
+import ReactLoading from 'react-loading';
 const URL = 'https://api.spacexdata.com/v4/launches'
 
 export default function Page() {
@@ -24,7 +25,7 @@ export default function Page() {
 
     fetch(URL).then(res => res.json()).then(data => {
       setLoading(true)
-      setData(data)
+      setData(data.slice(0, 30)) // change this
       setPageNumber(1)
       setCurrentCards(data.slice(0, 10 * 1))
     })
@@ -82,11 +83,21 @@ export default function Page() {
             )
           ) : (
             <>
-              Loading...
+              <ReactLoading className="load" type={'balls'} color={"rgb(163, 153, 153)"} height={'20%'} width={'20%'} />
             </>
           )
         }
-    </main>
+      </main>
+      {
+        (
+          currentCards.length === data.length &&
+          currentCards.length !== 0 && data.length !== 0
+        ) && (
+          // console.log('ok')
+          <div className="end">No more data :/</div>  
+        )
+      }
+      {/* {console.log(currentCards.length, data.length)} */}
     </>    
   )
 }

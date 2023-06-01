@@ -2,6 +2,7 @@ $lightgrey: rgb(236, 224, 224);
 $darkFont: grey;
 $white: white;
 $lighterFont: rgb(163, 153, 153);
+$border: rgb(211, 191, 191);
 
 * {
   box-sizing: border-box;
@@ -23,6 +24,8 @@ body{
 }
 header{
   width: min(650px, 90%);
+  border-radius: .3rem;
+  outline: 1px solid $border;
   input{
     background: $white;
     width: 100%;
@@ -34,6 +37,8 @@ header{
   }
 }
 main{
+  border-radius: .3rem;
+  outline: 1px solid $border;
   background: $white;
   width: min(650px, 90%);
   padding: 1rem;
@@ -54,6 +59,9 @@ main{
       width: 100%;
     }
   }
+}
+.load{
+  margin-inline: auto;
 }
 .card{
   width: 100%;
@@ -88,4 +96,13 @@ main{
       color: $lighterFont;
     }
   }
+}
+.end{
+  background: $white;
+  outline: 1px solid $border;
+  width: min(650px, 90%);
+  text-align: center;
+  padding: 1.5rem;
+  color: $darkFont;
+  border-radius: .3rem;
 }
