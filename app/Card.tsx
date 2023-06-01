@@ -1,7 +1,12 @@
+interface ICard{
+    flightNumber: number, missionName: string, 
+    launchYear: number, details: string
+}
+
 export default function Card({
     flightNumber, missionName, 
     launchYear, details
-}) {
+}: ICard) {
   return (
     <div className="card">
         <div className="img"></div>
